@@ -1,0 +1,125 @@
+@use 'sass:map';
+@use '../../css/scss/functions' as f;
+@import '../../css/scss/variables';
+@import '../../css/scss/color-palette';
+@import '../../css/scss/breakpoints';
+
+.form-wrapper {
+    .card {
+        border: 1px solid map.get($colors, 'black');
+        width: 95%;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: f.shade(map.get($colors, 'dark'), 'lighten', 90);
+        color: f.shade(map.get($colors, 'blue'), 'darken', 10);
+
+        .card-title {
+            font-weight: 200;
+            letter-spacing: 0.2rem;
+            text-align: center;
+            margin-bottom: 0px;
+        }
+    }
+    .form-control {
+        font-weight: 400;
+    }
+
+    .form-buttons {
+        margin-bottom: 0rem;
+    }
+
+    input {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: f.shade(map.get($colors, 'white'), 'darken', 100);
+
+        &:focus {
+            outline: 0;
+            border-bottom-color: f.shade(map.get($colors, 'blue'), 'darken', 10);
+            background-color: f.shade(map.get($colors, 'blue'), 'lighten', 90);
+        }
+    }
+
+    input[type='file'] {
+        display: none;
+    }
+
+    textarea {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: f.shade(map.get($colors, 'white'), 'darken', 100);
+        min-height: 4 * $base-font-size;
+        padding-top: 5px;
+
+        &:focus {
+            outline: 0;
+            border-bottom-color: f.shade(map.get($colors, 'blue'), 'darken', 10);
+            background-color: f.shade(map.get($colors, 'blue'), 'lighten', 90);
+        }
+    }
+
+    label {
+        font-weight: bold;
+        color: f.shade(map.get($colors, 'blue'), 'darken', 10);
+    }
+
+    @include xs {
+        .form-buttons {
+            & > * {
+                margin-bottom: 0.5rem;
+                margin-left: $base-margin * calc(4 / 3);
+            }
+        }
+    }
+
+    @include md {
+        .form-buttons {
+            & > * {
+                margin-left: 0rem;
+            }
+        }
+    }
+}
+
+.table-hover .card-detail:hover {
+    background-color: $background;
+}
+
+.card-detail-images {
+    display: flex;
+
+    img {
+        border: 1px solid black;
+        max-width: 300px;
+    }
+
+    @include xs {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    @include md {
+        flex-direction: row;
+        justify-content: center;
+        align-items: baseline;
+
+        .image {
+            &:first-child {
+                img {
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+}
+
+.card-detail-tags {
+    display: flex;
+    justify-content: center;
+    h4 {
+        margin: 0 $base-margin/2;
+        padding: $base-padding/2 $base-padding;
+
+        // border: 1px solid $dark;
+        border-radius: $base-border-radius;
+    }
+}

@@ -1,0 +1,21 @@
+// variables & functions
+@import './scss/color-palette';
+@import './scss/variables';
+@import './scss/functions';
+
+// base & layout
+@import './scss/base';
+@import './scss/breakpoints';
+@import './scss/layout';
+@import './scss/forms';
+
+// colors
+@import './scss/colors';
+@import './scss/components/button';
+@import './scss/components/table';
+
+// components (button, card, navbar etc)
+@import './scss/components/card';
+
+// utilities (margin, padding, opacity, etc)
+@import './scss/spacing';

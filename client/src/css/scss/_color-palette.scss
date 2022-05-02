@@ -1,0 +1,36 @@
+// theme colors
+$primary: rgba(47, 62, 78, 1) !default;
+$secondary: rgb(43, 125, 218) !default;
+$success: rgba(87, 185, 157, 1) !default;
+$info: rgba(80, 151, 213, 1) !default;
+$warning: rgba(231, 159, 60, 1) !default;
+$error: rgba(209, 85, 67, 1) !default;
+$danger: rgba(209, 85, 67, 1) !default;
+$light: rgba(237, 240, 241, 1) !default;
+$dark: rgba(126, 138, 139, 1) !default;
+
+// background color
+$background: rgb(255, 255, 255);
+$nav-background: hsl(230, 19%, 45%);
+
+// color palette
+$colors: (
+    'primary': $primary,
+    'secondary': $secondary,
+    'success': $success,
+    'info': $info,
+    'warning': $warning,
+    'error': $error,
+    'danger': $danger,
+    'light': $light,
+    'dark': $dark,
+    'blue': #1919e6,
+    'red': #e61919,
+    'yellow': #e6e619,
+    'green': #19e635,
+    'orange': #ffa600,
+    'purple': #9900ff,
+    'gray': #808080,
+    'black': black,
+    'white': white,
+) !default;

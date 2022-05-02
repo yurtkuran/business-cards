@@ -1,0 +1,54 @@
+@use 'sass:map';
+
+@mixin form-base() {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.form-control {
+    font-weight: 100;
+
+    position: relative;
+    width: 100%;
+    margin-top: $scale-factor * $base-margin;
+    margin-bottom: 0px;
+
+    height: 2 * $base-font-size;
+
+    border: 0;
+    border-bottom: 2px #000 solid;
+    border-top-left-radius: $base-border-radius;
+    border-top-right-radius: $base-border-radius;
+
+    display: block;
+    padding: 0px 5px 0px 5px;
+}
+
+input {
+    @include form-base();
+}
+
+button {
+    @include form-base();
+}
+
+select {
+    @include form-base();
+}
+
+optgroup {
+    @include form-base();
+}
+
+textarea {
+    @include form-base();
+    overflow: auto;
+    resize: vertical;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: $scale-factor * 0.5rem;
+    font-size: $font-size-sm;
+}

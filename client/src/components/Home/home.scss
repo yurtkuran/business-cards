@@ -1,0 +1,13 @@
+@use 'sass:map';
+@use '../../css/scss/functions' as f;
+@import '../../css/scss/color-palette';
+
+.home-wrapper {
+    .btn {
+        border-radius: 0px;
+        margin-right: 4px;
+    }
+    .form-control {
+        margin-top: 0px;
+    }
+}

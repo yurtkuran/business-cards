@@ -1,0 +1,106 @@
+@import '../../css/scss/_variables.scss';
+@import '../../css/scss/color-palette';
+
+.navbar {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    background: $nav-background;
+    border-bottom: 1px solid black;
+    height: 60px;
+    z-index: 5;
+    .far {
+        font-size: 1.4rem;
+    }
+}
+
+.navbar-logo {
+    font-size: 1.6rem;
+    color: #fff;
+    margin: 1rem 2rem;
+    cursor: pointer;
+}
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    height: 100%;
+    padding: 1rem;
+}
+
+.navbar-links li:hover {
+    background-color: #555;
+}
+
+.menu-icon {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    color: #fff;
+    font-size: $font-size-lg;
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+    }
+
+    .menu-icon {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: flex;
+        background: $nav-background;
+        width: 100%;
+        position: absolute;
+        top: -200%;
+        left: 0px;
+        z-index: 2;
+        transition: all 0.2s ease-in-out;
+        border-top: 2px solid $primary;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links ul li {
+        text-align: center;
+    }
+
+    .navbar-links ul li:first-child {
+        padding-top: 0.5rem;
+    }
+
+    .navbar-links ul li:last-child {
+        padding-bottom: 0.5rem;
+    }
+
+    .navbar-links ul li a {
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-links.active {
+        /* display: flex; */
+        left: 0px;
+        top: 60px;
+        transition: all 0.2s ease-in-out;
+    }
+}

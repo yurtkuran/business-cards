@@ -1,0 +1,107 @@
+@use 'sass:math';
+
+.container {
+    width: 100%;
+    // height: 100%;
+    height: calc(100vh - 60px);
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    overflow: auto;
+
+    @include xs {
+        padding: 1rem 0.5rem;
+        // background-color: rgb(100, 100, 100);
+        max-width: 100%;
+
+        .home-wrapper {
+            .page-index {
+                display: none;
+            }
+        }
+    }
+    @include sm {
+        padding: 1rem 0.5rem;
+        // background-color: rgb(120, 120, 120);
+        $max-width: math.floor(map-get($breakpoints, 'sm') * map-get($max-width-gutter, 'sm'));
+        max-width: $max-width;
+    }
+    @include md {
+        padding: 1rem 1rem;
+        // background-color: rgb(140, 140, 140);
+        $max-width: math.floor(map-get($breakpoints, 'md') * map-get($max-width-gutter, 'md'));
+        max-width: $max-width;
+
+        .home-wrapper {
+            .page-index {
+                display: block;
+            }
+        }
+    }
+    @include lg {
+        padding: 2rem 1rem;
+        // background-color: rgb(160, 160, 160);
+        $max-width: math.floor(map-get($breakpoints, 'lg') * map-get($max-width-gutter, 'lg'));
+        max-width: $max-width;
+    }
+    @include xl {
+        padding: 3rem 1rem;
+        // background-color: rgb(180, 180, 180);
+        $max-width: math.floor(map-get($breakpoints, 'xl') * map-get($max-width-gutter, 'xl'));
+        max-width: $max-width;
+    }
+    @include breakpoint(1400px) {
+        // background-color: rgb(200, 200, 200);
+        $max-width: math.floor(1400px * 0.98);
+        max-width: $max-width;
+    }
+}
+
+.col {
+    position: relative;
+    width: 100%;
+    padding-right: $scale-factor * 1rem;
+    padding-left: $scale-factor * 1rem;
+    flex-grow: 1;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    margin-right: 0;
+    margin-left: 0;
+
+    @include xs {
+        flex-direction: column;
+    }
+
+    @include md {
+        flex-direction: row;
+        margin-right: $scale-factor * -1rem;
+        margin-left: $scale-factor * -1rem;
+    }
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.justify-content-end {
+    justify-content: flex-end !important;
+}
+
+.rounded {
+    border-radius: $base-border-radius;
+}

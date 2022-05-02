@@ -1,0 +1,36 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    th,
+    td {
+        padding: 0.75rem;
+    }
+}
+
+.table-sm {
+    th,
+    td {
+        padding: 0.3rem;
+    }
+}
+
+.table-bordered {
+    th {
+        border: 1px solid #dee2e6;
+        border-top: 1px solid #b6b6b6;
+        border-bottom: 2px solid #b6b6b6;
+    }
+
+    td {
+        border: 1px solid #dee2e6;
+    }
+}
+
+.table-hover {
+    tbody {
+        tr:hover {
+            color: #373a3c;
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+    }
+}

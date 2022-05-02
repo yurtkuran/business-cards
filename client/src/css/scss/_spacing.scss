@@ -1,0 +1,57 @@
+@use 'sass:math';
+
+// margin and padding
+$space-suffix: (0, 1, 2, 3, 4, 5);
+$space-factor: (0, calc(2 / 3), 1, calc(4 / 3), 2, 4);
+
+@each $val in $space-suffix {
+    $idx: index($space-suffix, $val);
+
+    // all around margin
+    .m-#{$val} {
+        margin: $base-margin * nth($space-factor, $idx) !important;
+    }
+
+    // verticle margin
+    .my-#{$val} {
+        margin-top: $base-margin * nth($space-factor, $idx) !important;
+        margin-bottom: $base-margin * nth($space-factor, $idx) !important;
+    }
+
+    // horizontal margin
+    .mx-#{$val} {
+        margin-left: $base-margin * nth($space-factor, $idx) !important;
+        margin-right: $base-margin * nth($space-factor, $idx) !important;
+    }
+
+    // top margin
+    .mt-#{$val} {
+        margin-top: $base-margin * nth($space-factor, $idx) !important;
+    }
+
+    // bottom margin
+    .mb-#{$val} {
+        margin-bottom: $base-margin * nth($space-factor, $idx) !important;
+    }
+
+    // left margin
+    .ml-#{$val} {
+        margin-left: $base-margin * nth($space-factor, $idx) !important;
+    }
+
+    // right margin
+    .mr-#{$val} {
+        margin-right: $base-margin * nth($space-factor, $idx) !important;
+    }
+
+    // all around padding
+    .p-#{$val} {
+        padding: $base-padding * nth($space-factor, $idx) !important;
+    }
+
+    // verticle padding
+    .py-#{$val} {
+        padding-top: $base-padding * nth($space-factor, $idx) !important;
+        padding-bottom: $base-padding * nth($space-factor, $idx) !important;
+    }
+}

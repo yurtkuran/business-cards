@@ -1,0 +1,15 @@
+@use 'sass:map';
+
+@function shade($color: white, $mode: 'lighten', $amount: 100%) {
+    $mask: white;
+    @if ($mode == 'darken') {
+        $mask: black;
+    }
+    @return mix($mask, $color, $amount);
+}
+
+@function light-comp($color) {
+    $complement: complement($color);
+    $light-complement: lighten($complement, 30%);
+    @return $light-complement;
+}

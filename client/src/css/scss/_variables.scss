@@ -1,0 +1,20 @@
+// scale factor
+$scale-factor: 0.7;
+
+// spacing
+$base-padding: $scale-factor * 0.75rem !default;
+$base-margin: $scale-factor * 0.75rem !default;
+
+// borders
+$base-border-thickness: 1px !default;
+$base-border-radius: 4px !default;
+
+// box-shadow
+$base-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1) !default;
+
+// font sizes
+$base-font-size: $scale-factor * 1rem !default;
+$font-size-sm: $base-font-size * 0.75 !default;
+$font-size-lg: $base-font-size * 1.5 !default;
+$font-size-xl: $base-font-size * 2 !default;
+$font-size-xxl: $base-font-size * 3 !default;
