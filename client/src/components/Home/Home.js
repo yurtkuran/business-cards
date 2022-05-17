@@ -4,6 +4,7 @@ import { useState, useMemo, useCallback, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useTable, useSortBy, usePagination, useGlobalFilter, useAsyncDebounce, useExpanded } from 'react-table';
+import './home.scss';
 import '../Cards/cards.scss';
 
 // bring in redux
@@ -71,6 +72,7 @@ const Table = ({ columns, data, renderRowSubComponent, setSelectedImg }) => {
             columns,
             data,
             initialState: { pageIndex: 0 },
+            autoResetPage: false,
         },
         useGlobalFilter,
         useSortBy,

@@ -71,7 +71,9 @@ router.get('/findOne/:ID', async (req, res) => {
 // role:
 router.post('/', uploadImage, async (req, res) => {
     // destructure request body
-    let { _id, firstName, lastName, company, comment, tags, imageAttacted } = req.body;
+    let { _id, firstName, lastName, company, comment, imageAttacted } = req.body;
+    let tags = JSON.parse(req.body.tags);
+
     // console.log(req.body);
 
     // build save object
@@ -82,6 +84,8 @@ router.post('/', uploadImage, async (req, res) => {
         comment,
         images: [],
     };
+
+    console.log(tags);
 
     bCardFields.tags = Array.isArray(tags)
         ? tags

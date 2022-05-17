@@ -12,9 +12,11 @@ import './cards.scss';
 import { connect } from 'react-redux';
 
 // bring in components
+import TagInput from '../TagInput/TagInput';
 
 // bring in actions
 import { addOrUpdateCard } from '../../state/cards/cardActions';
+import { getTags } from '../../state/tags/tagActions';
 
 // bring in functions and hooks
 
@@ -63,7 +65,7 @@ const ImageField = ({ mode, side, previewSource, label, file, setPreviewSource, 
     );
 };
 
-const Home = ({ card: { current }, addOrUpdateCard }) => {
+const Home = ({ card: { current }, tag: { tags: suggestions }, addOrUpdateCard, getTags }) => {
     const types = ['image/png', 'image/jpeg'];
 
     // setup useNavigate hook
@@ -74,13 +76,27 @@ const Home = ({ card: { current }, addOrUpdateCard }) => {
     const [formData, setFormData] = useState(initialFormState);
     const [fileInput, setFileInput] = useState(initialFileState);
     const [previewSource, setPreviewSource] = useState({});
+    const [tags, setTags] = useState([]);
+
+    // load tag list
+    useEffect(() => {
+        getTags();
+    }, [getTags]);
 
     // set-up form data
     useEffect(() => {
         if (current) {
             setMode('edit');
-            const tagList = current.tags.join(', ');
-            setFormData({ ...current, tags: tagList });
+            // const tagList = current.tags.join(', ');
+            // setFormData({ ...current, tags: tagList });
+
+            const tagList = current.tags.map((tag, idx) => ({
+                id: idx,
+                name: tag,
+            }));
+            setTags(tagList);
+
+            setFormData(current);
 
             // load images
             const { images } = current;
@@ -117,7 +133,7 @@ const Home = ({ card: { current }, addOrUpdateCard }) => {
     };
 
     // destructure fields
-    const { firstName, lastName, company, tags, comment } = formData;
+    const { firstName, lastName, company, comment } = formData;
     const { front, back } = fileInput;
 
     // on submit handler
@@ -129,6 +145,10 @@ const Home = ({ card: { current }, addOrUpdateCard }) => {
 
         let data = {};
         data = new FormData(e.target);
+
+        // add tags
+        let tagList = tags.map((tag) => tag.name);
+        data.append('tags', JSON.stringify(tagList));
 
         if (current) {
             // update existing card, append _id to formData
@@ -144,6 +164,7 @@ const Home = ({ card: { current }, addOrUpdateCard }) => {
                 data.append(`imageAttacted[]`, JSON.stringify(image));
             }
         }
+
         if (isFormValid) addOrUpdateCard(data, navigate);
     };
 
@@ -171,9 +192,9 @@ const Home = ({ card: { current }, addOrUpdateCard }) => {
                         </div>
                     </div>
 
-                    <div className='row mt-0'>
+                    <div className='row mt-1'>
                         <div className='col'>
-                            <input className='form-control' type='text' onChange={onChange} name='tags' value={tags} />
+                            <TagInput tags={tags} setTags={setTags} suggestions={suggestions} />
                             <label className='mb-0'>Tags</label>
                         </div>
                     </div>
@@ -218,7 +239,7 @@ const Home = ({ card: { current }, addOrUpdateCard }) => {
                             <i className='fa fa-list-alt mr-1'></i>View All
                         </Link>
 
-                        <button className='btn-primary text-white mr-3'>
+                        <button type='submit' className='btn-primary text-white mr-3'>
                             <i className='fa fa-database mr-3'></i>Submit
                         </button>
                     </div>
@@ -230,11 +251,16 @@ const Home = ({ card: { current }, addOrUpdateCard }) => {
 
 Home.propTypes = {
     card: PropTypes.object.isRequired,
+    tag: PropTypes.object.isRequired,
     addOrUpdateCard: PropTypes.func.isRequired,
+    getTags: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({ card: state.card });
+const mapStateToProps = (state) => ({
+    card: state.card,
+    tag: state.tag,
+});
 
-const mapDispatchToProps = { addOrUpdateCard };
+const mapDispatchToProps = { addOrUpdateCard, getTags };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
