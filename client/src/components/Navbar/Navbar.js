@@ -33,7 +33,7 @@ const Navbar = () => {
             </div>
 
             <div className={`navbar-links ${open ? 'active' : ''}`}>
-                <ul>
+                <ul className={``}>
                     {MenuItems.map((item, idx) => {
                         return (
                             <li key={idx}>

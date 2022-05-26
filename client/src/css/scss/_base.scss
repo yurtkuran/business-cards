@@ -21,6 +21,12 @@ body {
 
 a {
     text-decoration: none;
+
+    &:focus,
+    &:focus-visible,
+    &:active {
+        outline: none;
+    }
 }
 
 button {

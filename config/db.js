@@ -1,3 +1,6 @@
+// connect using mongosh
+// mongosh "mongodb+srv://cluster0.ocb7n.mongodb.net/busniess_cards" --apiVersion 1 --username=developmentUser
+
 const mongoose = require('mongoose');
 
 // bring in local dependencies

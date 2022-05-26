@@ -1,0 +1,19 @@
+@import '../../css/scss/color-palette';
+
+.tag-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+
+    input {
+        border: none;
+        padding: 2px;
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+}
+
+.disabled-link {
+    pointer-events: none;
+}

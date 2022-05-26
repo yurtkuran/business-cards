@@ -85,8 +85,6 @@ router.post('/', uploadImage, async (req, res) => {
         images: [],
     };
 
-    console.log(tags);
-
     bCardFields.tags = Array.isArray(tags)
         ? tags
         : tags
@@ -220,8 +218,6 @@ router.post('/', uploadImage, async (req, res) => {
 // role:
 router.delete('/:ID', async (req, res) => {
     try {
-        // remove record
-
         // retrieve full document in order to move images to soft_delete folder
         const { images } = await BusinessCard.findOne({ _id: req.params.ID });
 
@@ -233,10 +229,11 @@ router.delete('/:ID', async (req, res) => {
             remaneCloudinaryImage(public_id, original_filename);
         });
 
+        // remove record
         await BusinessCard.findOneAndRemove({ _id: req.params.ID });
         res.json({ msg: 'business card deleted' });
     } catch (err) {
-        console.log(`B03 Error during record update: ${err.message}`);
+        console.log(`B03 Error during record delete: ${err.message}`);
         res.status(500).send('server error');
     }
 });

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const tagSchema = new mongoose.Schema(
     {
-        tag: {
+        name: {
             type: String,
             trim: true,
         },

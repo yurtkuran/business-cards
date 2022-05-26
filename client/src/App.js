@@ -11,7 +11,7 @@ import store from './state/store';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import CardForm from './components/Cards/CardForm';
-import Upload from './components/Upload/Upload';
+import Tags from './components/Tags/Tags';
 
 // bring in actions
 
@@ -32,7 +32,7 @@ function App() {
 
                         <Route path='/cardform' element={<CardForm />} />
 
-                        <Route path='/upload' element={<Upload />} />
+                        <Route path='/tags' element={<Tags />} />
 
                         <Route path='/about/*' element={<h2>About</h2>} />
 

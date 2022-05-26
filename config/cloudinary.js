@@ -14,7 +14,7 @@ const uploadToCloudinary = async (filename) => {
         uploadResponse = await cloudinary.uploader.upload(fileStr, { upload_preset: 'businessCards' });
         return uploadResponse;
     } catch (err) {
-        console.error(err);
+        console.error({ function: 'uploadToCloudinary', err });
         return { message: 'upload failed' };
     }
 };

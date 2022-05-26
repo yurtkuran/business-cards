@@ -22,7 +22,6 @@ const card = (state = initialState, action) => {
             return {
                 ...state,
                 current: state.cards.filter((card) => card._id === payload)[0],
-                currentLoading: false,
             };
 
         case CLEAR_CURRENT_CARD:

@@ -6,15 +6,15 @@ const tagUpdate = async (cardTags) => {
     if (cardTags === undefined) return;
     try {
         // load current tags
-        const storedTags = await Tag.find({}).select('tag -_id');
+        const storedTags = await Tag.find({}).select('name -_id');
 
         // convert to array
-        const tags = storedTags.map((storegTag) => storegTag.tag);
+        const tags = storedTags.map((storegTag) => storegTag.name);
 
         cardTags.map((tag) => {
             if (!tags.includes(tag.trim()) && tag.trim().length > 0) {
                 // save new tage to database
-                tag = new Tag({ tag });
+                tag = new Tag({ name: tag });
                 tag.save();
             }
         });
