@@ -48,6 +48,11 @@
         padding: 2rem 1rem;
         $max-width: math.floor(map-get($breakpoints, 'lg') * map-get($max-width-gutter, 'lg'));
         max-width: $max-width;
+
+        .home-table-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
     }
     @include xl {
         // background-color: rgb(180, 180, 180);

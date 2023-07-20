@@ -1,6 +1,8 @@
 // references
 // https://stackoverflow.com/questions/53606337/check-if-array-contains-all-elements-of-another-array
 // https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
+// https://blog.logrocket.com/implementing-copy-clipboard-react-clipboard-api/
+// https://www.npmjs.com/package/use-copy
 
 // bring in dependencies
 import { useState, useMemo, useCallback, Fragment } from 'react';
@@ -250,7 +252,7 @@ export const HomeTable = ({ tagList, card: { cards, current, loading: cardsLoadi
                 headerClassName: 'text-left',
                 className: 'text-left',
                 disableGlobalFilter: false,
-                width: '60px',
+                width: '40px',
             },
             {
                 Header: 'Last',
@@ -258,7 +260,7 @@ export const HomeTable = ({ tagList, card: { cards, current, loading: cardsLoadi
                 headerClassName: 'text-left',
                 className: 'text-left',
                 disableFilters: false,
-                width: '60px',
+                width: '40px',
             },
             {
                 Header: 'Company',
@@ -267,20 +269,46 @@ export const HomeTable = ({ tagList, card: { cards, current, loading: cardsLoadi
                 className: 'text-left',
                 disableGlobalFilter: false,
                 disableSortBy: false,
-                width: '30px',
+                width: '40px',
+            },
+            {
+                Header: 'Tags',
+                headerClassName: 'text-center',
+                className: 'text-center',
+                disableGlobalFilter: false,
+                disableSortBy: false,
+                width: '40px',
+                // prettier-ignore
+                Cell: ({row: {original: {tags}}}) => {
+                    return (tags.join(', '))
+                },
             },
             {
                 Header: () => null, // No header
                 accessor: 'edit',
                 width: '10px',
                 className: 'text-center',
-
+                width: '30px',
                 // prettier-ignore
                 Cell: ({row: {original: { _id }},
                 }) => {
                     return (
                         <Link to={'/cardform'} onClick={() => setCurrent(_id)}>
                             <i className='far fa-edit text-secondary'></i>
+                        </Link>
+                    );
+                },
+            },
+            {
+                Header: () => null, // No header
+                accessor: 'link',
+                width: '10px',
+                className: 'text-center',
+                // prettier-ignore
+                Cell: ({ row: {original: { _id }}}) => {
+                    return (
+                        <Link to={'#'} onClick={() => setCurrent(_id)}>
+                            <i className='fas fa-link text-secondary'></i>
                         </Link>
                     );
                 },

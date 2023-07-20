@@ -73,6 +73,10 @@ button:disabled {
     padding: 2rem 1rem;
     max-width: 912px;
   }
+  .content .home-table-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
 }
 @media (min-width: 1200px) {
   .content {

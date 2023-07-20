@@ -169,7 +169,7 @@ const Home = ({ card: { current }, tag: { tags: suggestions }, addOrUpdateCard, 
     };
 
     return (
-        <div className='form-wrapper'>
+        <div className='form-wrapper mt-5'>
             <div className='card'>
                 <h1 className='card-title'>Business Card</h1>
                 <form onSubmit={onSubmit}>

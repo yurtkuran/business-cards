@@ -30,6 +30,11 @@ const TagItem = ({ tag: { name, count }, tagList, handleSelectTag }) => {
             return;
         }
 
+        if (name === 'None' && tagList.length > 1) {
+            setSelected(false);
+            return;
+        }
+
         if (tagList.length === 0 && name === 'All') {
             setSelected(true);
             return;
@@ -71,8 +76,13 @@ const TagList = ({ tagList, setTagList, getTagsWithCount, tag: { tags, loading: 
             return;
         }
 
+        if (name === 'None') {
+            setTagList(['None']);
+            return;
+        }
+
         setTagList((prevTagList) => {
-            return prevTagList.includes(name) ? prevTagList.filter((tag) => tag !== name) : [...prevTagList, name];
+            return prevTagList.includes(name) ? prevTagList.filter((tag) => tag !== name) : [name].filter((tag) => tag !== 'None');
         });
     };
 
@@ -81,7 +91,7 @@ const TagList = ({ tagList, setTagList, getTagsWithCount, tag: { tags, loading: 
             <h4 className='my-2'>TagList</h4>
             <TagItem tag={{ name: 'All', count: cards?.length }} tagList={tagList} handleSelectTag={handleClick} />
             {!tagsLoading && tags.map((tag, idx) => <TagItem key={idx} tag={tag} tagList={tagList} handleSelectTag={handleClick} />)}
-            {noneCount && <TagItem tag={{ name: 'None', count: noneCount }} tagList={tagList} handleSelectTag={handleClick} />}
+            {noneCount !== 0 && <TagItem tag={{ name: 'None', count: noneCount }} tagList={tagList} handleSelectTag={handleClick} />}
         </div>
     );
 };
